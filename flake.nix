@@ -15,10 +15,7 @@
       in {
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
-            just
             yarn
-            maven
-            zulu8
           ];
           shellHook = ''
             # NOTE: this flags avoids ERR_OSSL_EVP_UNSUPPORTED
