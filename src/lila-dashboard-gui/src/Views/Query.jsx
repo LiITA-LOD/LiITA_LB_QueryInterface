@@ -247,45 +247,45 @@ class Query extends Component {
                 "GROUP BY  ?subject ?poslink ?pos\n" +
                 "ORDER BY ?wrs "
         })
-        items.push({
-            id: "prefixModule",
-            content: "Prefix",
-            icon: <ArrowForward style={{fontSize: "2em"}}/>,
-            commonQuery: "SELECT ?prefisso  ?labelPrefix  WHERE { \n" +
-                "      injectValue\n" +
-                "      \t\t?subject <http://lila-erc.eu/ontologies/lila/hasPrefix> ?prefisso.\n" +
-                "  \t\t\t?prefisso <http://www.w3.org/2000/01/rdf-schema#label> ?labelPrefix.\n" +
-                "    \t\t?prefisso <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://lila-erc.eu/ontologies/lila/Prefix> .\n" +
-                "\t\n" +
-                "nestedQuery\n" +
-                "\t\t} GROUP BY ?prefisso ?labelPrefix ORDER BY ?labelPrefix "
-        })
-        items.push({
-            id: "suffixModule",
-            content: "Suffix",
-            icon: <ArrowBack style={{fontSize: "2em"}}/>,
-            commonQuery: "SELECT ?suffisso ?labelSuffix  WHERE { \n" +
-                "      injectValue\n" +
-                "      \t\t?subject <http://lila-erc.eu/ontologies/lila/hasSuffix> ?suffisso.\n" +
-                "  \t\t\t?suffisso <http://www.w3.org/2000/01/rdf-schema#label> ?labelSuffix.\n" +
-                "    \t\t?suffisso <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://lila-erc.eu/ontologies/lila/Suffix> .\n" +
-                "\t\n" +
-                "nestedQuery\n" +
-                "\t\t} GROUP BY ?suffisso ?labelSuffix ORDER BY ?labelSuffix "
-        })
-        items.push({
-            id: "baseModule",
-            content: "Base",
-            icon: <GroupWork style={{fontSize: "2em"}}/>,
-            commonQuery: "SELECT ?base ?labelBase  WHERE { \n" +
-                "      injectValue\n" +
-                "      \t\t?subject <http://lila-erc.eu/ontologies/lila/hasBase> ?base.\n" +
-                "  \t\t\t?base <http://www.w3.org/2000/01/rdf-schema#label> ?labelBase.\n" +
-                "    \t\t?base <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://lila-erc.eu/ontologies/lila/Base> .\n" +
-                "\t\n" +
-                "nestedQuery\n" +
-                "\t\t} GROUP BY ?base ?labelBase ORDER BY ?labelBase "
-        })
+        // items.push({
+        //     id: "prefixModule",
+        //     content: "Prefix",
+        //     icon: <ArrowForward style={{fontSize: "2em"}}/>,
+        //     commonQuery: "SELECT ?prefisso  ?labelPrefix  WHERE { \n" +
+        //         "      injectValue\n" +
+        //         "      \t\t?subject <http://lila-erc.eu/ontologies/lila/hasPrefix> ?prefisso.\n" +
+        //         "  \t\t\t?prefisso <http://www.w3.org/2000/01/rdf-schema#label> ?labelPrefix.\n" +
+        //         "    \t\t?prefisso <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://lila-erc.eu/ontologies/lila/Prefix> .\n" +
+        //         "\t\n" +
+        //         "nestedQuery\n" +
+        //         "\t\t} GROUP BY ?prefisso ?labelPrefix ORDER BY ?labelPrefix "
+        // })
+        // items.push({
+        //     id: "suffixModule",
+        //     content: "Suffix",
+        //     icon: <ArrowBack style={{fontSize: "2em"}}/>,
+        //     commonQuery: "SELECT ?suffisso ?labelSuffix  WHERE { \n" +
+        //         "      injectValue\n" +
+        //         "      \t\t?subject <http://lila-erc.eu/ontologies/lila/hasSuffix> ?suffisso.\n" +
+        //         "  \t\t\t?suffisso <http://www.w3.org/2000/01/rdf-schema#label> ?labelSuffix.\n" +
+        //         "    \t\t?suffisso <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://lila-erc.eu/ontologies/lila/Suffix> .\n" +
+        //         "\t\n" +
+        //         "nestedQuery\n" +
+        //         "\t\t} GROUP BY ?suffisso ?labelSuffix ORDER BY ?labelSuffix "
+        // })
+        // items.push({
+        //     id: "baseModule",
+        //     content: "Base",
+        //     icon: <GroupWork style={{fontSize: "2em"}}/>,
+        //     commonQuery: "SELECT ?base ?labelBase  WHERE { \n" +
+        //         "      injectValue\n" +
+        //         "      \t\t?subject <http://lila-erc.eu/ontologies/lila/hasBase> ?base.\n" +
+        //         "  \t\t\t?base <http://www.w3.org/2000/01/rdf-schema#label> ?labelBase.\n" +
+        //         "    \t\t?base <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://lila-erc.eu/ontologies/lila/Base> .\n" +
+        //         "\t\n" +
+        //         "nestedQuery\n" +
+        //         "\t\t} GROUP BY ?base ?labelBase ORDER BY ?labelBase "
+        // })
         items.push({
             id: "genderModule",
             content: "Gender",
