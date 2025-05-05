@@ -290,37 +290,40 @@ class Query extends Component {
             id: "genderModule",
             content: "Gender",
             icon: <Gender style={{width: "2em"}}/>,
-            commonQuery: "SELECT ?gender ?labelGender  WHERE { \n" +
-                "      injectValue\n" +
-                "\t?subject <http://lila-erc.eu/ontologies/lila/hasGender> ?gender.\n" +
-                "\t?gender <http://www.w3.org/2000/01/rdf-schema#label> ?labelGender.\n" +
-                "  \t?gender <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .    \n" +
-                "nestedQuery\n" +
-                "} GROUP BY ?gender ?labelGender ORDER BY ?labelGender "
+            commonQuery: "SELECT DISTINCT ?gender ?labelGender WHERE { ?subject <http://lila-erc.eu/ontologies/lila/hasGender> ?gender . BIND(?gender AS ?labelGender) } ORDER BY ?labelGender",
+            // commonQuery: "SELECT ?gender ?labelGender  WHERE { \n" +
+            //     "      injectValue\n" +
+            //     "\t?subject <http://lila-erc.eu/ontologies/lila/hasGender> ?gender.\n" +
+            //     "\t?gender <http://www.w3.org/2000/01/rdf-schema#label> ?labelGender.\n" +
+            //     "  \t?gender <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .    \n" +
+            //     "nestedQuery\n" +
+            //     "} GROUP BY ?gender ?labelGender ORDER BY ?labelGender "
         })
         items.push({
             id: "posModule",
             content: "PoS",
             icon: <Extension style={{fontSize: "2em"}}/>,
-            commonQuery: "SELECT ?pos ?labelPos  WHERE { \n" +
-                "      injectValue\n" +
-                "\t?subject <http://lila-erc.eu/ontologies/lila/hasPOS> ?pos.\n" +
-                "\t?pos <http://www.w3.org/2000/01/rdf-schema#label> ?labelPos.\n" +
-                "  \t?pos <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .    \n" +
-                "nestedQuery\n" +
-                "} GROUP BY ?pos ?labelPos ORDER BY ?labelPos "
+            commonQuery: "SELECT DISTINCT ?pos ?labelPos WHERE { ?subject <http://lila-erc.eu/ontologies/lila/hasPOS> ?pos . BIND(?pos AS ?labelPos) } ORDER BY ?labelPos",
+            // commonQuery: "SELECT ?pos ?labelPos  WHERE { \n" +
+            //     "      injectValue\n" +
+            //     "\t?subject <http://lila-erc.eu/ontologies/lila/hasPOS> ?pos.\n" +
+            //     "\t?pos <http://www.w3.org/2000/01/rdf-schema#label> ?labelPos.\n" +
+            //     "  \t?pos <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .    \n" +
+            //     "nestedQuery\n" +
+            //     "} GROUP BY ?pos ?labelPos ORDER BY ?labelPos "
         })
         items.push({
             id: "inflectionModule",
             content: "Inflection",
             icon: <DeviceHub style={{fontSize: "2em"}}/>,
-            commonQuery: "SELECT ?inflection ?labelInflection  WHERE { \n" +
-                "      injectValue\n" +
-                "\t?subject <http://lila-erc.eu/ontologies/lila/hasInflectionType> ?inflection.\n" +
-                "\t?inflection <http://www.w3.org/2000/01/rdf-schema#label> ?labelInflection.\n" +
-                "  \t?inflection <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .    \n" +
-                "nestedQuery\n" +
-                "} GROUP BY ?inflection ?labelInflection ORDER BY ?inflection "
+            commonQuery: "SELECT DISTINCT ?inflection ?labelInflection WHERE { ?subject <http://lila-erc.eu/ontologies/lila/hasInflectionType> ?inflection . BIND(?inflection AS ?labelInflection) } ORDER BY ?labelInflection",
+            // commonQuery: "SELECT ?inflection ?labelInflection  WHERE { \n" +
+            //     "      injectValue\n" +
+            //     "\t?subject <http://lila-erc.eu/ontologies/lila/hasInflectionType> ?inflection.\n" +
+            //     "\t?inflection <http://www.w3.org/2000/01/rdf-schema#label> ?labelInflection.\n" +
+            //     "  \t?inflection <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .    \n" +
+            //     "nestedQuery\n" +
+            //     "} GROUP BY ?inflection ?labelInflection ORDER BY ?inflection "
         })
 
         return items
