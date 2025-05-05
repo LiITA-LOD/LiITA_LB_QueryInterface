@@ -602,7 +602,7 @@ class Query extends Component {
 
         console.log();
         $.ajax({
-            url: 'https://lila-erc.eu/sparql/' + endpoint + '/query?format=csv&query=' + encodeURIComponent(query),
+            url: 'https://kgccc.di.unito.it/sparql/' + endpoint + '/query?format=csv&query=' + encodeURIComponent(query),
             async: true,
             dataType: "text",
             success: function (data) {
