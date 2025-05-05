@@ -631,7 +631,7 @@ class Query extends Component {
     executeSparql(query, fields, callback) {
         $.ajax({
             //  url: 'https://lila-erc.eu/sparql/lemmaBank/query?format=csv&query=' + encodeURIComponent(query),
-            url: 'https://lila-erc.eu/sparql/lila_knowledge_base/query?format=csv&query=' + encodeURIComponent(query),
+            url: 'https://kgccc.di.unito.it/sparql/query?format=csv&query=' + encodeURIComponent(query),
             async: true,
             dataType: "text",
             success: function (data) {
@@ -767,7 +767,8 @@ class Query extends Component {
             "SELECT ?subject ?poslink ?pos (group_concat(distinct ?wr ; separator=\" \") as ?wrs) (group_concat(distinct ?lexicon ; separator=\" \") as ?lexicons) WHERE { \n" +
             "      injectValue\n" +
             "  ?subject <http://lila-erc.eu/ontologies/lila/hasPOS> ?poslink . \n" +
-            "  ?poslink <http://www.w3.org/2000/01/rdf-schema#label> ?pos .\n" +
+            "BIND(?poslink AS ?pos) .\n" +
+            // "  ?poslink <http://www.w3.org/2000/01/rdf-schema#label> ?pos .\n" +
             "  ?subject <http://www.w3.org/ns/lemon/ontolex#writtenRep> ?wr .\n" +
             "optional {\n" +
             "    ?le <http://www.w3.org/ns/lemon/ontolex#canonicalForm>  ?subject.\n" +
