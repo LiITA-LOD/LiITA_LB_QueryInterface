@@ -201,7 +201,8 @@ class Query extends Component {
             dialogOpen: false,
             lexicaldialogOpen: false,
             lexicaldialogResource: "",
-            lexicaldialogContent: ""
+            lexicaldialogContent: "",
+            lilaMappingLabel: {}
 
         };
     }
@@ -223,9 +224,47 @@ class Query extends Component {
     }
 
 
+    getDataFromLila = () => {
+        let me = this
+        let posQuery = "PREFIX oliasystem: <http://purl.org/olia/system.owl#>\n" +
+            "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
+            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
+            "SELECT * WHERE {\n" +
+            "  \t?key oliasystem:hasTier \"POS\";\n" +
+            "  \t\t\t\trdfs:label ?value.\n" +
+            "} "
+
+        let genderQuery = "PREFIX oliasystem: <http://purl.org/olia/system.owl#>\n" +
+            "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
+            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
+            "SELECT * WHERE {\n" +
+            "  \t?key oliasystem:hasTier \"Morphs\";\n" +
+            "  \t\t\t\trdfs:label ?value.\n" +
+            "} "
+        this.executeSparqlByEndpoint(posQuery, "https://lila-erc.eu/sparql/lila_knowledge_base/sparql", (data) => {
+            data.forEach((item) => {
+                let tmpMap = me.state.lilaMappingLabel
+                tmpMap[item.key] = item.value
+                me.setState({lilaMappingLabel : tmpMap})
+
+            })
+        })
+
+
+        this.executeSparqlByEndpoint(genderQuery, "https://lila-erc.eu/sparql/lila_knowledge_base/sparql", (data) => {
+            data.forEach((item) => {
+                let tmpMap = me.state.lilaMappingLabel
+                tmpMap[item.key] = item.value
+                me.setState({lilaMappingLabel : tmpMap})
+
+            })
+        })
+    }
+
     componentDidMount() {
 
         window.particlesJS.load('particles-js', 'assets/particles.json')
+        this.getDataFromLila()
         this.setState({items: this.getQueryItems()})
     }
 
@@ -578,6 +617,7 @@ class Query extends Component {
 
 
     loadSelectOptions(query, injectValues, uriField, labelField, callback) {
+        let me = this
         let injectedQuery = query.replace(/nestedQuery/g, "")
         let injections = ""
         injectValues.forEach((injection) =>
@@ -588,7 +628,7 @@ class Query extends Component {
         this.executeSparql(injectedQuery, [uriField, labelField], options => {
             let optionList = []
             options.forEach((o) => {
-                optionList.push(<option key={uuidv4()} value={o[uriField]}>{o[labelField]}</option>)
+                optionList.push(<option key={uuidv4()} value={o[uriField]}>{  o[uriField] in  me.state.lilaMappingLabel ? me.state.lilaMappingLabel[o[uriField]] :  o[labelField]}</option>)
             })
             callback(optionList)
         })
@@ -602,7 +642,7 @@ class Query extends Component {
 
         console.log();
         $.ajax({
-            url: 'https://kgccc.di.unito.it/sparql/' + endpoint + '/query?format=csv&query=' + encodeURIComponent(query),
+            url: endpoint + '?format=csv&query=' + encodeURIComponent(query),
             async: true,
             dataType: "text",
             success: function (data) {
@@ -855,7 +895,7 @@ class Query extends Component {
                     {
                         id: o.subject,
                         lemma: o.wrs,
-                        pos: o.pos,
+                        pos: o.pos in me.state.lilaMappingLabel ? me.state.lilaMappingLabel[o.pos]: o.pos,
                         lexicalResources: resources,
                         lodview: <Tooltip title="Open data sheet" placement="top"><a target='_blank' rel="noopener noreferrer" href={o.subject} style={{color: "#000"}}><Assessment style={{transform: "rotate(90deg)"}}/></a></Tooltip>,
                         lodlive: <Tooltip title="Open graph view" placement="top"><a target='_blank' rel="noopener noreferrer" href={"https://lila-erc.eu/lodlive/app_en.html?" + o.subject} style={{color: "#000"}}><BubbleChart/></a></Tooltip>
@@ -1049,7 +1089,7 @@ class Query extends Component {
                         }
                         lexicalEntries[defs.le].definitions.push(defs.defsString)
                     }
-                    if (defs.seeAlsoLemma.length > 0){
+                    if (defs.seeAlsoLemma.length > 0) {
                         seeAlsoLemma[defs.seeAlsoLemma] = defs.seeAlsoLemmaLabel
                     }
                 })
@@ -1070,10 +1110,10 @@ class Query extends Component {
                     }
                 }
                 if (Object.keys(seeAlsoLemma).length > 0) {
-                    dialogContent.push(<hr  style={{borderTop:"1px solid rgb(199, 199, 199)"}}/>)
-                    dialogContent.push(<h4 style={{marginBottom:"0px",marginTop:"5px"}}>See also:</h4>)
+                    dialogContent.push(<hr style={{borderTop: "1px solid rgb(199, 199, 199)"}}/>)
+                    dialogContent.push(<h4 style={{marginBottom: "0px", marginTop: "5px"}}>See also:</h4>)
                     for (const lemmaid in seeAlsoLemma) {
-                        dialogContent.push(<li style={{listStyle: "none", fontWeight: "100"}}><a href={lemmaid}>{seeAlsoLemma[lemmaid]}</a> </li>)
+                        dialogContent.push(<li style={{listStyle: "none", fontWeight: "100"}}><a href={lemmaid}>{seeAlsoLemma[lemmaid]}</a></li>)
                     }
                 }
 
