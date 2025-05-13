@@ -898,7 +898,7 @@ class Query extends Component {
                         pos: o.pos in me.state.lilaMappingLabel ? me.state.lilaMappingLabel[o.pos]: o.pos,
                         lexicalResources: resources,
                         lodview: <Tooltip title="Open data sheet" placement="top"><a target='_blank' rel="noopener noreferrer" href={o.subject} style={{color: "#000"}}><Assessment style={{transform: "rotate(90deg)"}}/></a></Tooltip>,
-                        lodlive: <Tooltip title="Open graph view" placement="top"><a target='_blank' rel="noopener noreferrer" href={"https://lila-erc.eu/lodlive/app_en.html?" + o.subject} style={{color: "#000"}}><BubbleChart/></a></Tooltip>
+                        // lodlive: <Tooltip title="Open graph view" placement="top"><a target='_blank' rel="noopener noreferrer" href={"https://lila-erc.eu/lodlive/app_en.html?" + o.subject} style={{color: "#000"}}><BubbleChart/></a></Tooltip>
                     })
             })
             me.setState({queryResults: results, resultCSV: CSVdump}, () => {
