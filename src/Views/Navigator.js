@@ -86,7 +86,7 @@ function Navigator(props) {
         <Drawer variant="permanent" {...other}>
             <List disablePadding>
                 <ListItem className={clsx(classes.firebase, classes.item, classes.itemCategory)}>
-                    LiLa Dashboard
+                    LiITA Dashboard
                 </ListItem>
                 <ListItem className={clsx(classes.item, classes.itemCategory)}>
                     <a href="https://lila-erc.eu" style={{color:'inherit',display:'flex',alignItems:'center',textDecoration:'none'}}>
@@ -98,7 +98,7 @@ function Navigator(props) {
                             primary: classes.itemPrimary,
                         }}
                     >
-                       LiLa Home Page
+                       LiITA Home Page
                     </ListItemText></a>
                 </ListItem>
                 <Router forceRefresh={true}>

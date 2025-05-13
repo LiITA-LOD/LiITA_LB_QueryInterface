@@ -112,7 +112,7 @@ function Copyright() {
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://lila-erc.eu">
-                LiLa ERC
+                LiITA ERC
             </Link>{' '}
             {new Date().getFullYear()}
             {''}
@@ -1409,11 +1409,11 @@ class Query extends Component {
                     </MuiDialogTitle>
                     <MuiDialogContent dividers>
                         <Typography variant={"button"} style={{fontFamily: 'moonbold'}}>
-                            Welcome to the LiLa: Linking Latin query interface!
+                            Welcome to the LiITA: Linking ITAlian query interface!
                         </Typography>
                         <p>
                             <Typography variant={"subtitle2"}>
-                                Here you can query the LiLa collection of Latin lemmas, which is used to connect linguistic resources and tools with Linked Data technology.
+                                Here you can query the LiITA collection of Latin lemmas, which is used to connect linguistic resources and tools with Linked Data technology.
                             </Typography></p>
                         <p>
                             <Typography variant={"button"} style={{fontFamily: 'moonbold'}}>

@@ -20,7 +20,7 @@ import {
 //         <Typography variant="body2" color="textSecondary" align="center">
 //             {'Copyright © '}
 //             <Link color="inherit" href="https://lila-erc.eu">
-//                 LiLa ERC
+//                 LiITA ERC
 //             </Link>{' '}
 //             {new Date().getFullYear()}
 //             {'.'}
