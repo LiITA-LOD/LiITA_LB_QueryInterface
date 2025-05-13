@@ -111,8 +111,8 @@ function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
-            <Link color="inherit" href="https://lila-erc.eu">
-                LiITA ERC
+            <Link color="inherit" href="https://liita.it">
+                LiITA
             </Link>{' '}
             {new Date().getFullYear()}
             {''}
@@ -1143,7 +1143,7 @@ class Query extends Component {
 
         return (
             <div style={{position: 'relative', background: 'inherit'}}>
-                <a href="https://lila-erc.eu" style={{position: 'absolute', top: '0px', right: '10px'}}><img src={"./elements/logo.gif"} style={{width: '70px'}}/></a>
+                <a href="https://liita.it" style={{position: 'absolute', top: '0px', right: '10px'}}><img src={"./elements/logo.gif"} style={{width: '70px'}}/></a>
                 <div>
 
                     <h1 className="noselect" style={{backgroundColor: 'transparent', fontFamily: 'moonbold', fontSize: "2em", color: "#fff", marginRight: '100px'}}>Lemma Bank Query Interface <HelpOutline style={{fontSize: "20px", color: '#37123C'}} onClick={() => {

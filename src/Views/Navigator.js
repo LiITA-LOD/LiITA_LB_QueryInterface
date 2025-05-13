@@ -32,8 +32,8 @@ const categories = [
     {
         id: 'Options',
         children: [
-            {id: '/query', icon: <PeopleIcon/>, text: 'Query Interface', active: true},
-            {id: '/sparql', icon: <Sparql style={{width: "1em",height: "1em",fill: 'rgba(255, 255, 255, 0.7)'}}/>, text: 'Sparql Endpoint'}
+            {url: 'https://liita-lod.github.io/LiITA_LB_QueryInterface/', icon: <PeopleIcon/>, text: 'Query Interface', active: true},
+            {url: 'https://kgccc.di.unito.it/sparql/', icon: <Sparql style={{width: "1em",height: "1em",fill: 'rgba(255, 255, 255, 0.7)'}}/>, text: 'Sparql Endpoint'}
         ],
     }
 ];
@@ -89,7 +89,7 @@ function Navigator(props) {
                     LiITA Dashboard
                 </ListItem>
                 <ListItem className={clsx(classes.item, classes.itemCategory)}>
-                    <a href="https://lila-erc.eu" style={{color:'inherit',display:'flex',alignItems:'center',textDecoration:'none'}}>
+                    <a href="https://liita.it" style={{color:'inherit',display:'flex',alignItems:'center',textDecoration:'none'}}>
                         <ListItemIcon className={classes.itemIcon}>
                         <HomeIcon/>
                     </ListItemIcon>
@@ -113,10 +113,9 @@ function Navigator(props) {
                                     {id}
                                 </ListItemText>
                             </ListItem>
-                            {children.map(({id: childId, icon, text, active}) => (
+                            {children.map(({url, icon, text, active}) => (
                                 <NavLink
-                                    key={childId}
-                                    to={childId}
+                                    to={{pathname: url}} target="_blank"
                                     className={classes.item}
                                     style={{textDecoration: 'none'}}
                                     activeStyle={{

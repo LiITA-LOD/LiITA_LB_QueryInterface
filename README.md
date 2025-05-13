@@ -1,6 +1,6 @@
 # LiITA_LB_QueryInterface
 
-The LiITA Lemma Bank query interface (<https://lila-erc.eu/query>) allows users to interrogate the collection of Latin lemmas utilized in LiITA to interlink the linguistic resources published therein.
+The LiITA Lemma Bank query interface (<https://liita-lod.github.io/LiITA_LB_QueryInterface/>) allows users to interrogate the collection of Latin lemmas utilized in LiITA to interlink the linguistic resources published therein.
 
 # Acknowledgments
 
