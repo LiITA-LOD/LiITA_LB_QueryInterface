@@ -671,7 +671,7 @@ class Query extends Component {
     executeSparql(query, fields, callback) {
         $.ajax({
             //  url: 'https://lila-erc.eu/sparql/lemmaBank/query?format=csv&query=' + encodeURIComponent(query),
-            url: 'https://kgccc.di.unito.it/sparql/query?format=csv&query=' + encodeURIComponent(query),
+            url: 'https://130.192.100.167:3031/sparql/query?format=csv&query=' + encodeURIComponent(query),
             async: true,
             dataType: "text",
             success: function (data) {

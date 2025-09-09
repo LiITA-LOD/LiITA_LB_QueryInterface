@@ -33,7 +33,7 @@ const categories = [
         id: 'Options',
         children: [
             {url: 'https://liita-lod.github.io/LiITA_LB_QueryInterface/', icon: <PeopleIcon/>, text: 'Query Interface', active: true},
-            {url: 'https://kgccc.di.unito.it/sparql/', icon: <Sparql style={{width: "1em",height: "1em",fill: 'rgba(255, 255, 255, 0.7)'}}/>, text: 'Sparql Endpoint'}
+            {url: 'https://130.192.100.167:3031/sparql/', icon: <Sparql style={{width: "1em",height: "1em",fill: 'rgba(255, 255, 255, 0.7)'}}/>, text: 'Sparql Endpoint'}
         ],
     }
 ];

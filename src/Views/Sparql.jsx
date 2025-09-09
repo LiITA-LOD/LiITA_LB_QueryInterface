@@ -11,7 +11,7 @@ class Sparql extends Component {
     render() {
 
 
-        const iframe = '<iframe src="https://kgccc.di.unito.it/sparql/" class="iframeLayout" ></iframe>';
+        const iframe = '<iframe src="https://130.192.100.167:3031/sparql/" class="iframeLayout" ></iframe>';
 
 
         return (
